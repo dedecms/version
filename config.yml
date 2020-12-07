@@ -5,13 +5,13 @@ delfile:
 # 删除指定文件到包中，如果有重复文件，则自动覆盖替换 ...
 addfile:
   "/var/del/ddd": "/var/add/ddd"
-# 全局替换 ...
+# 字符串直接替换替换 ...
 replaces:
-  - old: "dedecms"
-    new: "DedeCMS"
-  - old: "DedeBIZ"
-    new: "DedeCMS"
-# 全局根据Go模版替换内容 ...
+  "dedecms": "DedeCMS"
+# 正则替换 ...
+regexp:
+  "(\\.\\.|\\.)?/(img|image|images)/(.*).(jpg|gif|png)": "./resources/$2/$3.$4"
+# Go模版替换内容 ...
 parse:
   d: sss
   f: ssss
@@ -19,5 +19,5 @@ parse:
 charset:
   - UTF-8
   - GBK
-# 需要转化的文件后缀 ...
+# 需要替换内容的文件后缀 ...
 suffix: [php, htm, html, txt, js, css, inc, xml, md]

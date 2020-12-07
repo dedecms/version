@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"regexp"
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
@@ -32,17 +33,13 @@ import (
 
 // Config 配置
 type Config struct {
-	Replaces []Replace
+	Replaces map[string]string
 	Parse    map[string]interface{}
 	Charset  []string
 	DelFile  []string
 	AddFile  map[string]string
+	Regexp   map[string]string
 	Suffix   []string
-}
-
-// Replace 替换结构 ...
-type Replace struct {
-	Old, New string
 }
 
 func loadConfig() Config {
@@ -62,14 +59,20 @@ func loadConfig() Config {
 func main() {
 	conf := loadConfig()
 	filename := "index.html"
-	fmt.Println(conf)
+
 	if src, ok := util.OS(filename).Read(); ok {
+
+		for k, v := range conf.Regexp {
+			r := regexp.MustCompile(k)
+			src = r.ReplaceAllString(src, v)
+		}
+
 		for _, v := range conf.Parse {
 			src = util.Text(src).Parse(v)
 		}
 
-		for _, v := range conf.Replaces {
-			src = util.Text(src).Replace(v.Old, v.New)
+		for k, v := range conf.Replaces {
+			src = util.Text(src).Replace(k, v)
 		}
 
 		for _, v := range conf.Charset {
