@@ -5,81 +5,41 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
-	"path/filepath"
-	"regexp"
 	"time"
+
+	"./vtools"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/mycalf/util"
-	"gopkg.in/yaml.v3"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )
 
-// func Find(dst string) bool {
-// 	path, _ := util.OS("./"+workspace+"/DedeCMS").Find("*", "R")
-// 	for _, p := range path {
-// 		o := util.OS(p)
-// 		if o.IsDir() == false &&
-// 			o.Suffix() == ".php" || o.Suffix() == ".js" || o.Suffix() == ".htm" || o.Suffix() == ".css" || o.Suffix() == ".md" {
-// 			if util.Text(o.Cat()).Find(dst) {
-// 				return true
-// 			}
-// 		}
-// 	}
-// 	return false
-// }
-
-// Config 配置
-type Config struct {
-	Replaces map[string]string
-	Parse    map[string]interface{}
-	Charset  []string
-	DelFile  []string
-	AddFile  map[string]string
-	Regexp   map[string]string
-	Suffix   []string
-}
-
-func loadConfig() Config {
-	filename, _ := filepath.Abs("./config.yml")
-	yamlFile, err := ioutil.ReadFile(filename)
-	if err != nil {
-		panic(err)
-	}
-	var config Config
-	err = yaml.Unmarshal(yamlFile, &config)
-	if err != nil {
-		panic(err)
-	}
-	return config
-}
-
 func main() {
-	conf := loadConfig()
-	filename := "index.html"
 
-	if src, ok := util.OS(filename).Read(); ok {
-
-		for k, v := range conf.Regexp {
-			r := regexp.MustCompile(k)
-			src = r.ReplaceAllString(src, v)
-		}
-
-		for _, v := range conf.Parse {
-			src = util.Text(src).Parse(v)
-		}
-
-		for k, v := range conf.Replaces {
-			src = util.Text(src).Replace(k, v)
-		}
-
-		for _, v := range conf.Charset {
-			util.OS("./out").Add(v).Add(filename).WriteCharset(src, v)
+	conf := vtools.Conf
+	path, _ := util.OS(conf.SourceDIR).Find("*", "R")
+	for _, v := range path {
+		if util.OS(v).IsFile() {
+			vtools.Run(v)
 		}
 	}
 
+	// }
+	// func Find(dst string) bool {
+	// 	path, _ := util.OS("./"+workspace+"/DedeCMS").Find("*", "R")
+	// 	for _, p := range path {
+	// 		o := util.OS(p)
+	// 		if o.IsDir() == false &&
+	// 			o.Suffix() == ".php" || o.Suffix() == ".js" || o.Suffix() == ".htm" || o.Suffix() == ".css" || o.Suffix() == ".md" {
+	// 			if util.Text(o.Cat()).Find(dst) {
+	// 				return true
+	// 			}
+	// 		}
+	// 	}
+	// 	return false
+	// }
 	// exampleWriteGBK("./index.html")
 	// path, _ := util.OS("./"+workspace+"/DedeCMS").Find("*", "R")
 

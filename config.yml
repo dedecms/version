@@ -7,17 +7,17 @@ addfile:
   "/var/del/ddd": "/var/add/ddd"
 # 字符串直接替换替换 ...
 replaces:
-  "dedecms": "DedeCMS"
+  "{{.mainVerTime}}": "20110801"
+  "{{.verTime}}": "20180109"
+  "{{.verMsg}}": "V5.8"
+  "{{.demoName}}": "dedev57demo.txt"
 # 正则替换 ...
 regexp:
   "(\\.\\.|\\.)?/(img|image|images)/(.*).(jpg|gif|png)": "./resources/$2/$3.$4"
-# Go模版替换内容 ...
-parse:
-  d: sss
-  f: ssss
+  "charset=(\"|\')(.*)(\"|\')": "charset=\"{dede:global.cfg_soft_lang/}\""
 # 输出转码格式
 charset:
   - UTF-8
-  - GBK
 # 需要替换内容的文件后缀 ...
-suffix: [php, htm, html, txt, js, css, inc, xml, md]
+suffix: [.php, .htm, .html, .txt,  .css, .inc, .xml, .md]
+sourcedir: "./src"
