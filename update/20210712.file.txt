@@ -1,0 +1,13 @@
+uploads/include/dedetag.class.php, [NP-2021712-01] 互动关键词过滤功能可对全站进行过滤
+uploads/include/uploadsafe.inc.php, [SU-2021712-01] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+uploads/include/dialog/select_soft_post.php, [SU-2021712-01] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+uploads/include/dialog/select_images_post.php, [SU-2021712-01] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+uploads/include/dialog/select_templets_post.php, [SU-2021712-01] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+uploads/dede/content_batchup_action.php, [SU-2021712-02] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+uploads/dede/makehtml_freelist_action.php, [SU-2021712-03] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+uploads/dede/article_description_main.php, [SU-2021712-04] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+uploads/dede/module_main.php, [FX-2021712-01] 修复提示信息乱码问题，其他编码错误文件
+uploads/include/common.func.php, [FX-2021712-01] 修复提示信息乱码问题，其他编码错误文件
+uploads/include/dedeajax2.js, [FX-2021712-01] 修复提示信息乱码问题，其他编码错误文件
+uploads/member/space/company/header.htm, [FX-2021712-01] 修复提示信息乱码问题，其他编码错误文件
+uploads/member/templets/style/login.css, [FX-2021712-01] 修复提示信息乱码问题，其他编码错误文件

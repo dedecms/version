@@ -26,4 +26,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 .gitattributes
-src/
+src
+patch*
+public
