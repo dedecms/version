@@ -13,8 +13,6 @@ import (
 var srcdir = "./src/uploads"
 
 func main() {
-	// f := GetSourceFingerprints("5.7SP2")
-	// f.Save()
 
 	output := "./public/base-v57/utf-8/verifys.txt"
 
@@ -58,33 +56,3 @@ func main() {
 	snake.FS(srcdir).Cp("./public/base-v57/utf-8/source", true)
 
 }
-
-// type Fingerprint struct {
-// 	FileName string `yaml:"FileName"`
-// 	SHA256   string `yaml:"SHA256"`
-// }
-
-// type Fingerprints struct {
-// 	Version string         `yaml:"Version"`
-// 	List    []*Fingerprint `yaml:"List"`
-// }
-
-// func GetSourceFingerprints(ver string) *Fingerprints {
-// 	fs := new(Fingerprints)
-// 	fs.Version = ver
-// 	for _, v := range snake.FS("./src/uploads").Find("*") {
-// 		fs.List = append(fs.List, &Fingerprint{
-// 			FileName: v,
-// 			SHA256:   snake.FS(v).SHA256(),
-// 		})
-// 	}
-// 	return fs
-// }
-
-// func (f *Fingerprints) Save() {
-// 	d, err := yaml.Marshal(&f)
-// 	if err != nil {
-// 		log.Fatalf("error: %v", err)
-// 	}
-// 	snake.String(string(d)).Write("./fingerprints/sha256.yaml")
-// }
