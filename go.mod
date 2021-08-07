@@ -3,7 +3,8 @@ module github.com/dedecms/version
 go 1.16
 
 require (
-	github.com/dedecms/snake v0.0.0-20210806175019-71a0ca0818aa
+	github.com/BurntSushi/toml v0.4.1 // indirect
+	github.com/dedecms/snake v0.0.0-20210807202629-ee1a0ed96aed
 	github.com/google/go-github/v37 v37.0.0
 	github.com/shurcooL/githubv4 v0.0.0-20210725200734-83ba7b4c9228 // indirect
 	github.com/shurcooL/graphql v0.0.0-20200928012149-18c5c3165e3a // indirect

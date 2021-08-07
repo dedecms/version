@@ -66,8 +66,12 @@ func GetNewTagSHA() string {
 
 	return ""
 }
+func GetNewTarPackage() string {
+	url, _, _ := client.Repositories.GetArchiveLink(ctx, owner, repo, github.Tarball, nil, false)
+	return url.String()
+}
 
-func GetNewCommit() *Commits {
+func GetUpdateList() *Commits {
 
 	newCommit := new(Commits)
 	tagCommit := GetCommit(GetNewTagSHA())
@@ -79,7 +83,7 @@ func GetNewCommit() *Commits {
 	for _, v := range commits {
 		commit := GetCommit(v.GetSHA())
 		for _, file := range commit.Files {
-			if file.GetStatus() == "modified" {
+			if file.GetStatus() != "deleted" && snake.FS("./source").Add(file.GetFilename()).Exist() {
 				newCommit.Add(&Commit{
 					Filename: file.GetFilename(),
 					Message:  snake.String(v.Commit.GetMessage()).GetOneLine(),
