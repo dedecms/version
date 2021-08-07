@@ -21,20 +21,18 @@ var uplistfile = snake.FS(uplistdir).Add(snake.String(time.Now().Format("2006010
 
 func main() {
 
-	getSrc()
+	if !uplistfile.Exist() {
+		getSrc()
+		generateUpdateList()
+	} else {
+		generatePatch()
+		generateVerifys()
+		generatePackage()
 
-	// if !uplistfile.Exist() {
-	generateUpdateList()
-	// }
-
-	generatePatch()
-	generateVerifys()
-	generatePackage()
-
-	// 输出更新日志文件到对应目录
-	uplistfile.Cp("./public/base-v57/utf-8", true)
-	snake.FS(srcdir).Cp("./public/base-v57/utf-8/source", true)
-
+		// 输出更新日志文件到对应目录
+		uplistfile.Cp("./public/base-v57/utf-8", true)
+		snake.FS(srcdir).Cp("./public/base-v57/utf-8/source", true)
+	}
 }
 
 func getSrc() {
