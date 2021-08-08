@@ -88,7 +88,7 @@ func generateVerifys() string {
 func generatePatch() {
 
 	// 输出补丁包
-	patchname := snake.FS("./public/base-v57/package").Add(fmt.Sprintf("patch-v57sp2&v57sp1&v57-%s.tar.gz", time.Now().Format("20060102"))).Get()
+	patchname := snake.FS("./public/base-v57/package").Add(fmt.Sprintf("patch-v57sp2&v57sp1&v57-%s.zip", time.Now().Format("20060102"))).Get()
 	zip := snake.Zip(patchname)
 
 	if src, ok := uplistfile.Open(); ok {
