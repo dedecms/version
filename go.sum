@@ -7,6 +7,8 @@ github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/dedecms/snake v0.0.0-20210807202629-ee1a0ed96aed h1:aFso8oh6bVWK5AmVcRxW7hf2y4PJIXS8+8EPc5MdqZI=
 github.com/dedecms/snake v0.0.0-20210807202629-ee1a0ed96aed/go.mod h1:EOG2BkOni/DsUY7Si32+gyjZjfs8yYASrKJxDopYpjo=
+github.com/dimchansky/utfbom v1.1.1 h1:vV6w1AhK4VMnhBno/TPVCoK9U/LP0PkLCS9tbxHdi/U=
+github.com/dimchansky/utfbom v1.1.1/go.mod h1:SxdoEBH5qIqFocHMyGOXVAybYJdr71b1Q/j0mACtrfE=
 github.com/gogs/chardet v0.0.0-20150115103509-2404f7772561/go.mod h1:Pcatq5tYkCW2Q6yrR2VRHlbHpZ/R4/7qyL1TCF7vl14=
 github.com/gogs/chardet v0.0.0-20191104214054-4b6791f73a28 h1:gBeyun7mySAKWg7Fb0GOcv0upX9bdaZScs8QcRo8mEY=
 github.com/gogs/chardet v0.0.0-20191104214054-4b6791f73a28/go.mod h1:Pcatq5tYkCW2Q6yrR2VRHlbHpZ/R4/7qyL1TCF7vl14=

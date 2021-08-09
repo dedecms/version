@@ -13,6 +13,7 @@ import (
 
 	"github.com/dedecms/snake"
 	"github.com/dedecms/snake/pkg"
+	"github.com/dedecms/version/encode"
 	"github.com/dedecms/version/github"
 	"github.com/dedecms/version/log"
 	"github.com/kenkyu392/go-safe"
@@ -48,17 +49,35 @@ func main() {
 			l := log.Start("发版任务完成")
 			editPackage()
 			generatePatch()
-			generateVerifys()
-			generatePackage()
+
+			sl := log.Start("拷贝GBK源码： ./public/base-v57/gb2312/source")
+			copyGBK()
+			sl.Done()
+
+			generateGBKPackage()
+
+			sl = log.Start("拷贝GBK更新日志文件: ./public/base-v57/gb2312/" + uplistfile.Base())
+			if f, ok := uplistfile.Open(); ok {
+				bytes := f.Byte()
+				f.Close()
+				if gbk, err := simplifiedchinese.GBK.NewEncoder().Bytes(bytes); err == nil {
+					snake.FS("./public/base-v57/gb2312", uplistfile.Base()).ByteWriter(gbk)
+				}
+			}
+			sl.Done()
+
+			sl = log.Start("拷贝UTF8源码： ./public/base-v57/utf-8/source")
+			snake.FS(srcdir).Cp("./public/base-v57/utf-8/source", true)
+			sl.Done()
+
+			generateUTF8Package()
 
 			// 输出更新日志文件到对应目录
-			sl := log.Start("拷贝更新日志文件: ./public/base-v57/utf-8/" + uplistfile.Base())
+			sl = log.Start("拷贝UTF8更新日志文件: ./public/base-v57/utf-8/" + uplistfile.Base())
 			uplistfile.Cp("./public/base-v57/utf-8", true)
 			sl.Done()
 
-			sl = log.Start("拷贝源码： ./public/base-v57/utf-8/source")
-			snake.FS(srcdir).Cp("./public/base-v57/utf-8/source", true)
-			sl.Done()
+			generateVerifys()
 
 			l.Done()
 		}
@@ -164,9 +183,9 @@ func generatePatch() {
 	l.Done()
 }
 
-func generatePackage() {
+func generateUTF8Package() {
 
-	l := log.Start("生成安装包: ./public/base-v57/package/DedeCMS-V5.7-UTF8-SP2.tar.gz")
+	l := log.Start("生成UTF-8安装包: ./public/base-v57/package/DedeCMS-V5.7-UTF8-SP2.tar.gz")
 	// 输出安装
 	patchname := snake.FS("./public/base-v57/package").Add("DedeCMS-V5.7-UTF8-SP2.tar.gz")
 	zip := snake.Tar(patchname.Get())
@@ -182,9 +201,59 @@ func generatePackage() {
 	zip.Close()
 	l.Done()
 
-	l = log.Start("生成安装包hash文件: ./public/base-v57/package/md5.hash.txt")
+	l = log.Start("生成UTF-8安装包hash文件: ./public/base-v57/package/md5.hash.txt")
 	snake.FS("./public/base-v57/package/md5.hash.txt").Write(fmt.Sprintf(`jsonCallback({"DedeCMS-V5.7-UTF8-SP2.tar.gz":"%s"});`, patchname.MD5()))
 	l.Done()
+}
+
+func generateGBKPackage() {
+
+	l := log.Start("生成GBK安装包: ./public/base-v57/package/DedeCMS-V5.7-GBK-SP2.tar.gz")
+	// 输出安装
+	patchname := snake.FS("./public/base-v57/package").Add("DedeCMS-V5.7-GBK-SP2.tar.gz")
+	zip := snake.Tar(patchname.Get())
+	for _, v := range snake.FS(srcrootdir).Find("*") {
+		gbk := snake.FS(snake.String(v).Remove(snake.FS(srcrootdir).Get()).Trim("/").Trim(`\`).Get())
+		openfile := snake.FS(v)
+		if src, ok := openfile.Open(); ok {
+			bytes := src.Byte()
+			stat, _ := src.Get().Stat()
+			src.Close()
+			if openfile.IsFile() {
+				if snake.String(snake.FS(v).Ext()).ExistSlice([]string{".html", ".htm", ".php", ".txt", ".xml", ".js", ".css", ".inc"}) {
+					bytes = getGBKbyte(v, string(bytes))
+					gbkbody, _ := simplifiedchinese.GBK.NewEncoder().Bytes(bytes)
+					bytes = gbkbody
+				}
+			}
+
+			zip.Add(gbk.Get(), stat, bytes)
+		}
+	}
+	zip.Close()
+	l.Done()
+
+}
+
+func copyGBK() {
+	outdir := snake.FS("public/base-v57/gb2312/source")
+	for _, v := range snake.FS(srcdir).Find("*") {
+		outfile := snake.String(v).ReplaceOne(snake.FS(srcdir).Get(), outdir.Get())
+		if snake.FS(v).IsDir() {
+			snake.FS(outfile.Get()).MkDir()
+		}
+		if snake.FS(v).IsFile() {
+			f, _ := snake.FS(v).Open()
+			bytes := f.Byte()
+			f.Close()
+			if snake.String(snake.FS(v).Ext()).ExistSlice([]string{".html", ".htm", ".php", ".txt", ".xml", ".js", ".css", ".inc"}) {
+				utf8, _ := encode.GetEncoding(bytes)
+				body := getGBKbyte(v, utf8.Text())
+				bytes, _ = simplifiedchinese.GBK.NewEncoder().Bytes(body)
+			}
+			snake.FS(outfile.Get()).ByteWriter(bytes)
+		}
+	}
 }
 
 // 修改包信息
@@ -215,4 +284,36 @@ func editPackage() {
 	ver.Write(time.Now().Format("20060102"))
 	verifies.Write(time.Now().Format("20060102"))
 	l.Done()
+}
+
+func getGBKbyte(v, body string) []byte {
+	bytes := []byte(body)
+	if snake.String(snake.FS(v).Ext()).ExistSlice([]string{".html", ".htm"}) {
+		bytes = snake.String(body).
+			Replace(`(<meta ((http-equiv|content).*(http-equiv|content)|).*charset.*=.*)(?i)(utf-8|big5)(.*>)`, "${1}gb2312${6}"). // 替换 *.HTML, *.HTM META CHARSET
+			Byte()
+	} else if snake.String(snake.FS(v).Ext()).ExistSlice([]string{".xml"}) {
+		bytes = snake.String(body).
+			Replace(`(lang(.*|)=(.*|))(?i)(utf-8|big5)`, "${1}gb2312"). // 替换 *.XML LANG
+			Byte()
+	} else if snake.String(snake.FS(v).Ext()).ExistSlice([]string{".js"}) {
+		bytes = snake.String(body).
+			Replace(`((.*|)this.sendlang(.*|)= '(.*|))(?i)(utf-8|big5)`, "${1}gb2312"). // 替换 *.JS this.sendlang
+			Byte()
+	} else if snake.String(snake.FS(v).Ext()).ExistSlice([]string{".css"}) {
+		bytes = snake.String(body).
+			Replace(`((.*|)@charset.*("|'))(?i)(utf-8|big5)`, "${1}gb2312"). // 替换 *.CSS charset
+			Byte()
+	} else if snake.String(snake.FS(v).Ext()).ExistSlice([]string{".php"}) {
+		bytes = snake.String(body).
+			Replace(`((.*|)\$cfg_db_language(.*)=(.*)("|'))(?i)(utf8)`, "${1}gbk").
+			Replace(`((.*|)\$cfg_soft_lang(.*)=(.*)("|'))(?i)(utf-8)`, "${1}gb2312").
+			Replace(`((.*|)\$s_lang(.*)=(.*)("|'))(?i)(utf-8)`, "${1}gb2312").
+			Replace(`((.*|)\$verMsg(.*)=(.*)("|').*V5.7.*)(?i)(utf8)`, "${1}GBK").
+			Replace(`((.*|)\$dfDbname(.*)=(.*)("|').*dedecmsv57.*)(?i)(utf8)`, "${1}gbk").
+			Replace(`((.*|)\$cfg_version(.*)=(.*)("|')V(.*)_)(?i)(utf8|gb2312|big5)`, "${1}GBK").
+			Byte()
+	}
+
+	return bytes
 }
