@@ -1,0 +1,9 @@
+dede/sys_verifies.php, 提示语优化
+dede/article_edit.php, 修复$pubdate，不是int，是通过GetMkTime从普通时间转换为Linux时间截
+dede/sys_verifies.php, 修改错别字
+dede/templets/sys_verifies.htm, 修改错别字
+dede/templets/sys_verifies_getfiles.htm, 修改错别字
+dede/templets/sys_verifies_manage.htm, 修改错别字
+dede/templets/sys_verifies_verify.htm, 修改错别字
+member/index_do.php, 修改错别字
+member/mail.php, 修改错别字
