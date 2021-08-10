@@ -66,14 +66,14 @@ func main() {
 			}
 			sl.Done()
 
-			sl = log.Start("拷贝UTF8源码： ./public/base-v57/utf-8/source")
+			sl = log.Start("拷贝UTF-8源码： ./public/base-v57/utf-8/source")
 			snake.FS(srcdir).Cp("./public/base-v57/utf-8/source", true)
 			sl.Done()
 
 			generateUTF8Package()
 
 			// 输出更新日志文件到对应目录
-			sl = log.Start("拷贝UTF8更新日志文件: ./public/base-v57/utf-8/" + uplistfile.Base())
+			sl = log.Start("拷贝UTF-8更新日志文件: ./public/base-v57/utf-8/" + uplistfile.Base())
 			uplistfile.Cp("./public/base-v57/utf-8", true)
 			sl.Done()
 
