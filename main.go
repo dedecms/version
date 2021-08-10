@@ -66,6 +66,8 @@ func main() {
 			}
 			sl.Done()
 
+			generateGBKVerifys()
+
 			sl = log.Start("拷贝UTF-8源码： ./public/base-v57/utf-8/source")
 			snake.FS(srcdir).Cp("./public/base-v57/utf-8/source", true)
 			sl.Done()
@@ -75,6 +77,11 @@ func main() {
 			// 输出更新日志文件到对应目录
 			sl = log.Start("拷贝UTF-8更新日志文件: ./public/base-v57/utf-8/" + uplistfile.Base())
 			uplistfile.Cp("./public/base-v57/utf-8", true)
+			sl.Done()
+
+			// 输出更新日志文件到对应目录
+			sl = log.Start("输出最后更新文件: ./public/base-v57/latest.txt")
+			snake.FS("./public/base-v57/latest.txt").Write(snake.String(time.Now().Unix()).Get())
 			sl.Done()
 
 			generateVerifys()
@@ -139,11 +146,24 @@ func generateUpdateList() snake.FileSystem {
 }
 
 func generateVerifys() string {
-	l := log.Start("生成系统指纹文件: ./public/base-v57/utf-8/verifys.txt")
+	l := log.Start("生成UTF-8系统指纹文件: ./public/base-v57/utf-8/verifys.txt")
 	var output = "./public/base-v57/utf-8/verifys.txt"
 	snake.FS(output).MkFile()
 	for _, v := range snake.FS(srcdir).Find("*.htm", "*.html", "*.js", "*.php") {
 		file := snake.String(v).Replace(snake.FS(srcdir).Get(), "..")
+		snake.String(file.MD5()).Add("	", snake.FS(v).MD5()).Add("	", file.Get()).Ln().Write(output, true)
+	}
+	l.Done()
+	return output
+}
+
+func generateGBKVerifys() string {
+	l := log.Start("生成GBK系统指纹文件: ./public/base-v57/gb2312/verifys.txt")
+	var output = "./public/base-v57/gb2312/verifys.txt"
+	snake.FS(output).MkFile()
+	src := snake.FS("./public/base-v57/gb2312/source")
+	for _, v := range src.Find("*.htm", "*.html", "*.js", "*.php") {
+		file := snake.String(v).Replace(src.Get(), "..")
 		snake.String(file.MD5()).Add("	", snake.FS(v).MD5()).Add("	", file.Get()).Ln().Write(output, true)
 	}
 	l.Done()
@@ -167,19 +187,18 @@ func generatePatch() {
 			item := snake.String(v).Split(",")
 			utf8 := snake.FS("utf-8").Add(snake.String(item[0]).Remove("uploads/").Get())
 			gbk := snake.FS("gb2312").Add(snake.String(item[0]).Remove("uploads/").Get())
-
-			if src, ok := snake.FS(srcdir).Add(item[0]).Open(); ok {
-				body := src.Byte()
-				src.Close()
+			src := snake.FS(srcdir).Add(item[0])
+			if file, ok := src.Open(); ok {
+				body := file.Byte()
+				file.Close()
 				zip.Add(utf8.Get(), body)
 
-				if !snake.String(snake.FS(v)).Find("ckeditor", true) ||
-					(snake.String(snake.FS(v)).Find("ckeditor", true) && snake.String(snake.FS(v).Ext()).ExistSlice([]string{".php"})) ||
-					snake.String(snake.FS(v).Get()).Find("ckeditor/lang/zh-cn.js") {
-					if snake.String(snake.FS(v).Ext()).ExistSlice([]string{".html", ".htm", ".php", ".txt", ".xml", ".js", ".css", ".inc"}) {
-						body = getGBKbyte(v, string(body))
-						gbkbody, _ := simplifiedchinese.GBK.NewEncoder().Bytes(body)
-						body = gbkbody
+				if !snake.String(src.Get()).Find("ckeditor", true) ||
+					(snake.String(src.Get()).Find("ckeditor", true) && snake.String(src.Ext()).ExistSlice([]string{".php"})) ||
+					snake.String(src.Get()).Find("ckeditor/lang/zh-cn.js") {
+					if snake.String(src.Ext()).ExistSlice([]string{".html", ".htm", ".php", ".txt", ".xml", ".js", ".css", ".inc"}) {
+						body = getGBKbyte(src.Get(), string(body))
+						body, _ = simplifiedchinese.GBK.NewEncoder().Bytes(body)
 					}
 				}
 
