@@ -172,9 +172,18 @@ func generatePatch() {
 				body := src.Byte()
 				src.Close()
 				zip.Add(utf8.Get(), body)
-				if gbkbody, err := simplifiedchinese.GBK.NewEncoder().Bytes(body); err == nil {
-					zip.Add(gbk.Get(), gbkbody)
+
+				if !snake.String(snake.FS(v)).Find("ckeditor", true) ||
+					(snake.String(snake.FS(v)).Find("ckeditor", true) && snake.String(snake.FS(v).Ext()).ExistSlice([]string{".php"})) ||
+					snake.String(snake.FS(v).Get()).Find("ckeditor/lang/zh-cn.js") {
+					if snake.String(snake.FS(v).Ext()).ExistSlice([]string{".html", ".htm", ".php", ".txt", ".xml", ".js", ".css", ".inc"}) {
+						body = getGBKbyte(v, string(body))
+						gbkbody, _ := simplifiedchinese.GBK.NewEncoder().Bytes(body)
+						body = gbkbody
+					}
 				}
+
+				zip.Add(gbk.Get(), body)
 			}
 
 		}
@@ -220,10 +229,14 @@ func generateGBKPackage() {
 			stat, _ := src.Get().Stat()
 			src.Close()
 			if openfile.IsFile() {
-				if snake.String(snake.FS(v).Ext()).ExistSlice([]string{".html", ".htm", ".php", ".txt", ".xml", ".js", ".css", ".inc"}) {
-					bytes = getGBKbyte(v, string(bytes))
-					gbkbody, _ := simplifiedchinese.GBK.NewEncoder().Bytes(bytes)
-					bytes = gbkbody
+				if !snake.String(snake.FS(v)).Find("ckeditor", true) ||
+					(snake.String(snake.FS(v)).Find("ckeditor", true) && snake.String(snake.FS(v).Ext()).ExistSlice([]string{".php"})) ||
+					snake.String(snake.FS(v).Get()).Find("ckeditor/lang/zh-cn.js") {
+					if snake.String(snake.FS(v).Ext()).ExistSlice([]string{".html", ".htm", ".php", ".txt", ".xml", ".js", ".css", ".inc"}) {
+						bytes = getGBKbyte(v, string(bytes))
+						gbkbody, _ := simplifiedchinese.GBK.NewEncoder().Bytes(bytes)
+						bytes = gbkbody
+					}
 				}
 			}
 
@@ -246,11 +259,16 @@ func copyGBK() {
 			f, _ := snake.FS(v).Open()
 			bytes := f.Byte()
 			f.Close()
-			if snake.String(snake.FS(v).Ext()).ExistSlice([]string{".html", ".htm", ".php", ".txt", ".xml", ".js", ".css", ".inc"}) {
-				utf8, _ := encode.GetEncoding(bytes)
-				body := getGBKbyte(v, utf8.Text())
-				bytes, _ = simplifiedchinese.GBK.NewEncoder().Bytes(body)
+			if !snake.String(snake.FS(v).Get()).Find("ckeditor", true) ||
+				(snake.String(snake.FS(v).Get()).Find("ckeditor", true) && snake.String(snake.FS(v).Ext()).ExistSlice([]string{".php"})) ||
+				snake.String(snake.FS(v).Get()).Find("ckeditor/lang/zh-cn.js") {
+				if snake.String(snake.FS(v).Ext()).ExistSlice([]string{".html", ".htm", ".php", ".txt", ".xml", ".js", ".css", ".inc"}) {
+					utf8, _ := encode.GetEncoding(bytes)
+					body := getGBKbyte(v, utf8.Text())
+					bytes, _ = simplifiedchinese.GBK.NewEncoder().Bytes(body)
+				}
 			}
+
 			snake.FS(outfile.Get()).ByteWriter(bytes)
 		}
 	}
@@ -306,12 +324,13 @@ func getGBKbyte(v, body string) []byte {
 			Byte()
 	} else if snake.String(snake.FS(v).Ext()).ExistSlice([]string{".php"}) {
 		bytes = snake.String(body).
-			Replace(`((.*|)\$cfg_db_language(.*)=(.*)("|'))(?i)(utf8)`, "${1}gbk").
-			Replace(`((.*|)\$cfg_soft_lang(.*)=(.*)("|'))(?i)(utf-8)`, "${1}gb2312").
+			Replace(`((.*|)\$cfg_db_language(.*)=( |	)("|'))(?i)(utf8)`, "${1}gbk").
+			Replace(`((.*|)\$cfg_soft_lang(.*)=( |	)("|'))(?i)(utf-8)`, "${1}gb2312").
+			Replace(`((.*|)\$cfg_version(.*)=( |	)("|')V(.*)_)(?i)(utf8|gb2312|big5)`, "${1}GBK").
 			Replace(`((.*|)\$s_lang(.*)=(.*)("|'))(?i)(utf-8)`, "${1}gb2312").
 			Replace(`((.*|)\$verMsg(.*)=(.*)("|').*V5.7.*)(?i)(utf8)`, "${1}GBK").
 			Replace(`((.*|)\$dfDbname(.*)=(.*)("|').*dedecmsv57.*)(?i)(utf8)`, "${1}gbk").
-			Replace(`((.*|)\$cfg_version(.*)=(.*)("|')V(.*)_)(?i)(utf8|gb2312|big5)`, "${1}GBK").
+			Replace(`((.*|)return cn_substr_utf8(.*)=(.*)("|')V(.*)_)(?i)(utf8|gb2312|big5)`, "${1}GBK").
 			Byte()
 	}
 
