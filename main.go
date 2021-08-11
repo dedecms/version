@@ -195,7 +195,9 @@ func generatePatch() {
 
 				if !snake.String(src.Get()).Find("ckeditor", true) ||
 					(snake.String(src.Get()).Find("ckeditor", true) && snake.String(src.Ext()).ExistSlice([]string{".php"})) ||
-					snake.String(src.Get()).Find("ckeditor/lang/zh-cn.js") {
+					snake.String(src.Get()).Find("ckeditor/lang/zh-cn.js") ||
+					snake.String(snake.FS(v).Get()).Find("ckeditor/plugins/multipic/plugin.js") ||
+					snake.String(snake.FS(v).Get()).Find("ckeditor/plugins/dedepage/plugin.js") {
 					if snake.String(src.Ext()).ExistSlice([]string{".html", ".htm", ".php", ".txt", ".xml", ".js", ".css", ".inc"}) {
 						body = getGBKbyte(src.Get(), string(body))
 						body, _ = simplifiedchinese.GBK.NewEncoder().Bytes(body)
@@ -250,7 +252,9 @@ func generateGBKPackage() {
 			if openfile.IsFile() {
 				if !snake.String(snake.FS(v)).Find("ckeditor", true) ||
 					(snake.String(snake.FS(v)).Find("ckeditor", true) && snake.String(snake.FS(v).Ext()).ExistSlice([]string{".php"})) ||
-					snake.String(snake.FS(v).Get()).Find("ckeditor/lang/zh-cn.js") {
+					snake.String(snake.FS(v).Get()).Find("ckeditor/lang/zh-cn.js") ||
+					snake.String(snake.FS(v).Get()).Find("ckeditor/plugins/multipic/plugin.js") ||
+					snake.String(snake.FS(v).Get()).Find("ckeditor/plugins/dedepage/plugin.js") {
 					if snake.String(snake.FS(v).Ext()).ExistSlice([]string{".html", ".htm", ".php", ".txt", ".xml", ".js", ".css", ".inc"}) {
 						bytes = getGBKbyte(v, string(bytes))
 						gbkbody, _ := simplifiedchinese.GBK.NewEncoder().Bytes(bytes)
@@ -280,7 +284,9 @@ func copyGBK() {
 			f.Close()
 			if !snake.String(snake.FS(v).Get()).Find("ckeditor", true) ||
 				(snake.String(snake.FS(v).Get()).Find("ckeditor", true) && snake.String(snake.FS(v).Ext()).ExistSlice([]string{".php"})) ||
-				snake.String(snake.FS(v).Get()).Find("ckeditor/lang/zh-cn.js") {
+				snake.String(snake.FS(v).Get()).Find("ckeditor/lang/zh-cn.js") ||
+				snake.String(snake.FS(v).Get()).Find("ckeditor/plugins/multipic/plugin.js") ||
+				snake.String(snake.FS(v).Get()).Find("ckeditor/plugins/dedepage/plugin.js") {
 				if snake.String(snake.FS(v).Ext()).ExistSlice([]string{".html", ".htm", ".php", ".txt", ".xml", ".js", ".css", ".inc"}) {
 					utf8, _ := encode.GetEncoding(bytes)
 					body := getGBKbyte(v, utf8.Text())
