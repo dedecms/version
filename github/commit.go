@@ -2,6 +2,7 @@ package github
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"github.com/dedecms/snake"
@@ -58,6 +59,7 @@ func GetTags() []*github.RepositoryTag {
 }
 
 func GetNewTagSHA() string {
+
 	if tags := GetTags(); tags != nil {
 		for _, v := range GetTags() {
 			return *v.Commit.SHA
@@ -74,21 +76,36 @@ func GetNewTarPackage() string {
 func GetUpdateList() *Commits {
 
 	newCommit := new(Commits)
+
 	tagCommit := GetCommit(GetNewTagSHA())
 	commits := GetCommits(&github.CommitsListOptions{
 		Until: time.Now(),
 		Since: tagCommit.Commit.Committer.Date.Add(time.Second),
 	})
+	count := make(map[string]int)
 
 	for _, v := range commits {
 		commit := GetCommit(v.GetSHA())
-		for _, file := range commit.Files {
-			if file.GetStatus() != "deleted" && snake.FS("./source").Add(file.GetFilename()).Exist() {
-				newCommit.Add(&Commit{
-					Filename: file.GetFilename(),
-					Message:  snake.String(v.Commit.GetMessage()).GetOneLine(),
-				})
+		msg := v.Commit.GetMessage()
+		msg = snake.String(msg).GetOneLine()
 
+		if m := snake.String(msg).Extract(`\[(.*)\]([ |	]{0,})(.*)`, "$1"); len(m) == 1 {
+			tag := snake.String(m[0]).Trim(" ").Trim("	").ToUpper().Get()
+			count[tag]++
+			if tag == "SU" {
+				msg = fmt.Sprintf("[%s-%s-%d] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装", tag, time.Now().Format("20060102"), count[tag])
+			} else {
+				m = snake.String(msg).Extract(`\[(.*)\]([ |	]{0,})(.*)`, fmt.Sprintf("[%s-%s-%d] $3", tag, time.Now().Format("20060102"), count[tag]))
+				msg = m[0]
+			}
+			for _, file := range commit.Files {
+				if file.GetStatus() != "deleted" && snake.FS("./source").Add(file.GetFilename()).Exist() {
+					newCommit.Add(&Commit{
+						Filename: file.GetFilename(),
+						Message:  msg,
+					})
+
+				}
 			}
 		}
 	}

@@ -215,35 +215,35 @@ func generatePatch() {
 
 func generateUTF8Package() {
 
-	l := log.Start("生成UTF-8安装包: ./public/base-v57/package/DedeCMS-V5.7-UTF8-SP2.tar.gz")
+	l := log.Start("生成UTF-8安装包: ./public/base-v57/package/DedeCMS-V5.7-UTF8-SP2.tar.bz2")
 	// 输出安装
-	patchname := snake.FS("./public/base-v57/package").Add("DedeCMS-V5.7-UTF8-SP2.tar.gz")
+	patchname := snake.FS("./public/base-v57/package").Add("DedeCMS-V5.7-UTF8-SP2.tar.bz2")
 	zip := snake.Tar(patchname.Get())
 	for _, v := range snake.FS(srcrootdir).Find("*") {
-		utf8 := snake.FS(snake.String(v).Remove(snake.FS(srcrootdir).Get()).Trim("/").Trim(`\`).Get())
+		utf8 := snake.FS(v).ReplaceRoot("")
 		if src, ok := snake.FS(v).Open(); ok {
 			body := src.Byte()
 			stat, _ := src.Get().Stat()
-			src.Close()
 			zip.Add(utf8.Get(), stat, body)
+			src.Close()
 		}
 	}
 	zip.Close()
 	l.Done()
 
 	l = log.Start("生成UTF-8安装包hash文件: ./public/base-v57/package/md5.hash.txt")
-	snake.FS("./public/base-v57/package/md5.hash.txt").Write(fmt.Sprintf(`jsonCallback({"DedeCMS-V5.7-UTF8-SP2.tar.gz":"%s"});`, patchname.MD5()))
+	snake.FS("./public/base-v57/package/md5.hash.txt").Write(fmt.Sprintf(`jsonCallback({"DedeCMS-V5.7-UTF8-SP2.tar.bz2":"%s"});`, patchname.MD5()))
 	l.Done()
 }
 
 func generateGBKPackage() {
 
-	l := log.Start("生成GBK安装包: ./public/base-v57/package/DedeCMS-V5.7-GBK-SP2.tar.gz")
+	l := log.Start("生成GBK安装包: ./public/base-v57/package/DedeCMS-V5.7-GBK-SP2.tar.bz2")
 	// 输出安装
-	patchname := snake.FS("./public/base-v57/package").Add("DedeCMS-V5.7-GBK-SP2.tar.gz")
+	patchname := snake.FS("./public/base-v57/package").Add("DedeCMS-V5.7-GBK-SP2.tar.bz2")
 	zip := snake.Tar(patchname.Get())
 	for _, v := range snake.FS(srcrootdir).Find("*") {
-		gbk := snake.FS(snake.String(v).Remove(snake.FS(srcrootdir).Get()).Trim("/").Trim(`\`).Get())
+		gbk := snake.FS(v).ReplaceRoot("")
 		openfile := snake.FS(v)
 		if src, ok := openfile.Open(); ok {
 			bytes := src.Byte()
@@ -316,7 +316,7 @@ func editPackage() {
 		for _, v := range u.String().Lines() {
 			massage := snake.String(v).Split(",")
 			output := snake.String(massage[1]).Trim(" ").Trim("	").Get()
-			if !changelog.Find(output) {
+			if !changelog.Find(output, true) {
 				changelog.Add(output).Ln()
 			}
 		}
