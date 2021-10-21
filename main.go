@@ -32,6 +32,7 @@ func main() {
 		if !uplistfile.Exist() {
 			l := log.Start("发版初始化任务完成")
 			getSource()
+			updateVerFile()
 			generateUpdateList()
 			l.Done()
 		} else {
@@ -131,6 +132,13 @@ func getSource() {
 	}
 
 	gr.Close()
+	l.Done()
+}
+
+func updateVerFile() {
+	l := log.Start("修正版本号。")
+	snake.FS("./source/uploads/data/admin/ver.txt").Write(time.Now().Format("20060102"))
+	snake.FS("./source/uploads/data/admin/verifies.txt").Write(time.Now().Format("20060102"))
 	l.Done()
 }
 
