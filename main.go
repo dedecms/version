@@ -223,9 +223,9 @@ func generatePatch() {
 
 func generateUTF8Package() {
 
-	l := log.Start("生成UTF-8安装包: ./public/base-v57/package/DedeCMS-V5.7-UTF8-SP2.tar.bz2")
+	l := log.Start("生成UTF-8安装包: ./public/base-v57/package/DedeCMS-" + ver + "-UTF8.tar.bz2")
 	// 输出安装
-	patchname := snake.FS("./public/base-v57/package").Add("DedeCMS-V5.7-UTF8-SP2.tar.bz2")
+	patchname := snake.FS("./public/base-v57/package").Add("DedeCMS-" + ver + "-UTF8.tar.bz2")
 	zip := snake.Tar(patchname.Get())
 	for _, v := range snake.FS(srcrootdir).Find("*") {
 		utf8 := snake.FS(v).ReplaceRoot("")
@@ -240,15 +240,15 @@ func generateUTF8Package() {
 	l.Done()
 
 	l = log.Start("生成UTF-8安装包hash文件: ./public/base-v57/package/md5.hash.txt")
-	snake.FS("./public/base-v57/package/md5.hash.txt").Write(fmt.Sprintf(`jsonCallback({"DedeCMS-V5.7-UTF8-SP2.tar.bz2":"%s"});`, patchname.MD5()))
+	snake.FS("./public/base-v57/package/md5.hash.txt").Write(fmt.Sprintf(`jsonCallback({"DedeCMS-" + ver + "-UTF8.tar.bz2":"%s"});`, patchname.MD5()))
 	l.Done()
 }
 
 func generateGBKPackage() {
 
-	l := log.Start("生成GBK安装包: ./public/base-v57/package/DedeCMS-V5.7-GBK-SP2.tar.bz2")
+	l := log.Start("生成GBK安装包: ./public/base-v57/package/DedeCMS-" + ver + "-GBK.tar.bz2")
 	// 输出安装
-	patchname := snake.FS("./public/base-v57/package").Add("DedeCMS-V5.7-GBK-SP2.tar.bz2")
+	patchname := snake.FS("./public/base-v57/package").Add("DedeCMS-" + ver + "-GBK.tar.bz2")
 	zip := snake.Tar(patchname.Get())
 	for _, v := range snake.FS(srcrootdir).Find("*") {
 		gbk := snake.FS(v).ReplaceRoot("")
