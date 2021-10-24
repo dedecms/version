@@ -240,7 +240,7 @@ func generateUTF8Package() {
 	l.Done()
 
 	l = log.Start("生成UTF-8安装包hash文件: ./public/base-v57/package/md5.hash.txt")
-	snake.FS("./public/base-v57/package/md5.hash.txt").Write(fmt.Sprintf(`jsonCallback({"DedeCMS-" + ver + "-UTF8.tar.bz2":"%s"});`, patchname.MD5()))
+	snake.FS("./public/base-v57/package/md5.hash.txt").Write(fmt.Sprintf(`jsonCallback({"DedeCMS-%s-UTF8.tar.bz2":"%s"});`, ver, patchname.MD5()))
 	l.Done()
 }
 
