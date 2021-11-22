@@ -1,19 +1,19 @@
-data/mark/inc_photowatermark_config.php, [NP-20210719-01] Ê¹ÓÃµ±Ç°ÎÄÕÂ±êÌâ×÷ÎªË®Ó¡Í¼Æ¬ÎÄ×Ö
-dede/article_add.php, [NP-20210719-01] Ê¹ÓÃµ±Ç°ÎÄÕÂ±êÌâ×÷ÎªË®Ó¡Í¼Æ¬ÎÄ×Ö
-dede/article_test_title.php, [NP-20210719-01] Ê¹ÓÃµ±Ç°ÎÄÕÂ±êÌâ×÷ÎªË®Ó¡Í¼Æ¬ÎÄ×Ö
-dede/js/main.js, [NP-20210719-01] Ê¹ÓÃµ±Ç°ÎÄÕÂ±êÌâ×÷ÎªË®Ó¡Í¼Æ¬ÎÄ×Ö
-dede/sys_info_mark.php, [NP-20210719-01] Ê¹ÓÃµ±Ç°ÎÄÕÂ±êÌâ×÷ÎªË®Ó¡Í¼Æ¬ÎÄ×Ö
-dede/templets/article_add.htm, [NP-20210719-01] Ê¹ÓÃµ±Ç°ÎÄÕÂ±êÌâ×÷ÎªË®Ó¡Í¼Æ¬ÎÄ×Ö
-dede/templets/sys_info_mark.htm, [NP-20210719-01] Ê¹ÓÃµ±Ç°ÎÄÕÂ±êÌâ×÷ÎªË®Ó¡Í¼Æ¬ÎÄ×Ö
-include/dialog/select_images.php, [NP-20210719-01] Ê¹ÓÃµ±Ç°ÎÄÕÂ±êÌâ×÷ÎªË®Ó¡Í¼Æ¬ÎÄ×Ö
-include/dialog/select_images_post.php, [NP-20210719-01] Ê¹ÓÃµ±Ç°ÎÄÕÂ±êÌâ×÷ÎªË®Ó¡Í¼Æ¬ÎÄ×Ö
-include/helpers/image.helper.php, [NP-20210719-01] Ê¹ÓÃµ±Ç°ÎÄÕÂ±êÌâ×÷ÎªË®Ó¡Í¼Æ¬ÎÄ×Ö
-include/image.class.php, [NP-20210719-01] Ê¹ÓÃµ±Ç°ÎÄÕÂ±êÌâ×÷ÎªË®Ó¡Í¼Æ¬ÎÄ×Ö
-include/dedetag.class.php, [SU-20210719-01] Ìá¸ßÁËDedeCMSµÄ°²È«ĞÔ£¬½¨ÒéËùÓĞ¹Ù·½Ô­°æ³ÌĞò´î½¨µÄÕ¾µã¶¼½øĞĞ°²×°
-include/dedemodule.class.php, [SU-20210719-02] Ìá¸ßÁËDedeCMSµÄ°²È«ĞÔ£¬½¨ÒéËùÓĞ¹Ù·½Ô­°æ³ÌĞò´î½¨µÄÕ¾µã¶¼½øĞĞ°²×°
-include/dedemodule.class.php, [FX-20210719-01] ¼æÈİĞÔ¸üĞÂ
-include/uploadsafe.inc.php, [FX-20210719-01] ¼æÈİĞÔ¸üĞÂ
-include/dialog/select_images_post.php, [FX-20210719-01] ¼æÈİĞÔ¸üĞÂ
-include/dialog/select_soft_post.php, [FX-20210719-01] ¼æÈİĞÔ¸üĞÂ
-include/dialog/select_templets_post.php, [FX-20210719-01] ¼æÈİĞÔ¸üĞÂ
-include/ckeditor/plugins/addon/plugin.js, [FX-20210719-02] ĞŞ¸´×ÊÔ´Á´½ÓÎŞĞ§ÎÊÌâ
+data/mark/inc_photowatermark_config.php, [NP-20210719-01] ä½¿ç”¨å½“å‰æ–‡ç« æ ‡é¢˜ä½œä¸ºæ°´å°å›¾ç‰‡æ–‡å­—
+dede/article_add.php, [NP-20210719-01] ä½¿ç”¨å½“å‰æ–‡ç« æ ‡é¢˜ä½œä¸ºæ°´å°å›¾ç‰‡æ–‡å­—
+dede/article_test_title.php, [NP-20210719-01] ä½¿ç”¨å½“å‰æ–‡ç« æ ‡é¢˜ä½œä¸ºæ°´å°å›¾ç‰‡æ–‡å­—
+dede/js/main.js, [NP-20210719-01] ä½¿ç”¨å½“å‰æ–‡ç« æ ‡é¢˜ä½œä¸ºæ°´å°å›¾ç‰‡æ–‡å­—
+dede/sys_info_mark.php, [NP-20210719-01] ä½¿ç”¨å½“å‰æ–‡ç« æ ‡é¢˜ä½œä¸ºæ°´å°å›¾ç‰‡æ–‡å­—
+dede/templets/article_add.htm, [NP-20210719-01] ä½¿ç”¨å½“å‰æ–‡ç« æ ‡é¢˜ä½œä¸ºæ°´å°å›¾ç‰‡æ–‡å­—
+dede/templets/sys_info_mark.htm, [NP-20210719-01] ä½¿ç”¨å½“å‰æ–‡ç« æ ‡é¢˜ä½œä¸ºæ°´å°å›¾ç‰‡æ–‡å­—
+include/dialog/select_images.php, [NP-20210719-01] ä½¿ç”¨å½“å‰æ–‡ç« æ ‡é¢˜ä½œä¸ºæ°´å°å›¾ç‰‡æ–‡å­—
+include/dialog/select_images_post.php, [NP-20210719-01] ä½¿ç”¨å½“å‰æ–‡ç« æ ‡é¢˜ä½œä¸ºæ°´å°å›¾ç‰‡æ–‡å­—
+include/helpers/image.helper.php, [NP-20210719-01] ä½¿ç”¨å½“å‰æ–‡ç« æ ‡é¢˜ä½œä¸ºæ°´å°å›¾ç‰‡æ–‡å­—
+include/image.class.php, [NP-20210719-01] ä½¿ç”¨å½“å‰æ–‡ç« æ ‡é¢˜ä½œä¸ºæ°´å°å›¾ç‰‡æ–‡å­—
+include/dedetag.class.php, [SU-20210719-01] æé«˜äº†DedeCMSçš„å®‰å…¨æ€§ï¼Œå»ºè®®æ‰€æœ‰å®˜æ–¹åŸç‰ˆç¨‹åºæ­å»ºçš„ç«™ç‚¹éƒ½è¿›è¡Œå®‰è£…
+include/dedemodule.class.php, [SU-20210719-02] æé«˜äº†DedeCMSçš„å®‰å…¨æ€§ï¼Œå»ºè®®æ‰€æœ‰å®˜æ–¹åŸç‰ˆç¨‹åºæ­å»ºçš„ç«™ç‚¹éƒ½è¿›è¡Œå®‰è£…
+include/dedemodule.class.php, [FX-20210719-01] å…¼å®¹æ€§æ›´æ–°
+include/uploadsafe.inc.php, [FX-20210719-01] å…¼å®¹æ€§æ›´æ–°
+include/dialog/select_images_post.php, [FX-20210719-01] å…¼å®¹æ€§æ›´æ–°
+include/dialog/select_soft_post.php, [FX-20210719-01] å…¼å®¹æ€§æ›´æ–°
+include/dialog/select_templets_post.php, [FX-20210719-01] å…¼å®¹æ€§æ›´æ–°
+include/ckeditor/plugins/addon/plugin.js, [FX-20210719-02] [GBK] ä¿®å¤èµ„æºé“¾æ¥æ— æ•ˆé—®é¢˜
