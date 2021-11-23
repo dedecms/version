@@ -9,6 +9,20 @@ DedeCMS发版工具。
 请输入本次所发版本的版本号: V5.7.***
 自动生成public文件夹
 
-3、在 https://github.com/dedecms/5.7/releases 生成一个Releases，V5.7.***
+3、更新后台版本
+复制base-v57文件夹
+在服务器上进入/public目录
+粘贴后选择合并文件夹，
+然后选择覆盖文件
+然后手动修改verinfo.txt
+
+4、更新官网版本
+复制base-v57文件夹
+在服务器上进入/public目录
+粘贴后选择合并文件夹，
+然后选择覆盖文件
+然后手动修改verinfo.txt
+
+5、在 https://github.com/dedecms/5.7/releases 生成一个Releases，V5.7.***
 注意！！！字母V必须大写！！！
 ```
