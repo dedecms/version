@@ -1,0 +1,15 @@
+include/common.inc.php, [NP-20211123-1] 超时退出登录
+include/arc.archives.class.php, [FX-20211123-1] 文档内容同一关键词替换次数
+dede/member_toadmin.php, [NP-20211123-2] 密码必须包含1个数字，1个小写字母，1个大写字母！而且必须大于8位小于128位！
+dede/sys_admin_user_add.php, [NP-20211123-2] 密码必须包含1个数字，1个小写字母，1个大写字母！而且必须大于8位小于128位！
+dede/sys_admin_user_edit.php, [NP-20211123-2] 密码必须包含1个数字，1个小写字母，1个大写字母！而且必须大于8位小于128位！
+dede/templets/member_toadmin.htm, [NP-20211123-2] 密码必须包含1个数字，1个小写字母，1个大写字母！而且必须大于8位小于128位！
+dede/templets/sys_admin_user_add.htm, [NP-20211123-2] 密码必须包含1个数字，1个小写字母，1个大写字母！而且必须大于8位小于128位！
+dede/templets/sys_admin_user_edit.htm, [NP-20211123-2] 密码必须包含1个数字，1个小写字母，1个大写字母！而且必须大于8位小于128位！
+dede/makehtml_map.php, [NP-20211123-3] XML地图
+dede/templets/makehtml_map_guide.htm, [NP-20211123-3] XML地图
+include/arc.sitemapview.class.php, [NP-20211123-3] XML地图
+templets/plus/sitemap_xml.htm, [NP-20211123-3] XML地图
+include/dedemodule.class.php, [SU-20211123-1] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+include/dedetag.class.php, [SU-20211123-1] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+plus/ad_js.php, [SU-20211123-1] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
