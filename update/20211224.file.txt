@@ -1,0 +1,46 @@
+dede/archives_do.php, [NP-20211224-1] 文档日志审核状态批量操作
+dede/inc/inc_list_functions.php, [NP-20211224-2] 审核状态
+dede/templets/content_i_list.htm, [NP-20211224-2] 审核状态
+dede/templets/content_list.htm, [NP-20211224-2] 审核状态
+dede/templets/content_sg_list.htm, [NP-20211224-2] 审核状态
+member/inc/inc_list_functions.php, [NP-20211224-2] 审核状态
+dede/inc/inc_list_functions.php, [FX-20211224-1] 获得内容的限定级别名称
+member/inc/inc_list_functions.php, [FX-20211224-1] 获得内容的限定级别名称
+dede/archives_log_export.php, [NP-20211224-3] 文档日志导出
+dede/inc/inc_action_info.php, [FX-20211224-2] 系统配置项
+dede/album_add.php, [NP-20211224-4] 文档日志管理
+dede/album_edit.php, [NP-20211224-4] 文档日志管理
+dede/archives_add.php, [NP-20211224-4] 文档日志管理
+dede/archives_edit.php, [NP-20211224-4] 文档日志管理
+dede/archives_log_detail.php, [NP-20211224-4] 文档日志管理
+dede/archives_log_list.php, [NP-20211224-4] 文档日志管理
+dede/archives_log_view.php, [NP-20211224-4] 文档日志管理
+dede/archives_sg_add.php, [NP-20211224-4] 文档日志管理
+dede/archives_sg_edit.php, [NP-20211224-4] 文档日志管理
+dede/article_add.php, [NP-20211224-4] 文档日志管理
+dede/article_edit.php, [NP-20211224-4] 文档日志管理
+dede/inc/inc_action_info.php, [NP-20211224-4] 文档日志管理
+dede/inc/inc_batchup.php, [NP-20211224-4] 文档日志管理
+dede/inc/inc_menu.php, [NP-20211224-4] 文档日志管理
+dede/inc/inc_menu_map.php, [NP-20211224-4] 文档日志管理
+dede/soft_add.php, [NP-20211224-4] 文档日志管理
+dede/soft_edit.php, [NP-20211224-4] 文档日志管理
+dede/templets/album_edit.htm, [NP-20211224-4] 文档日志管理
+dede/templets/archives_edit.htm, [NP-20211224-4] 文档日志管理
+dede/templets/archives_log_detail.htm, [NP-20211224-4] 文档日志管理
+dede/templets/archives_log_list.htm, [NP-20211224-4] 文档日志管理
+dede/templets/archives_log_view.htm, [NP-20211224-4] 文档日志管理
+dede/templets/archives_sg_edit.htm, [NP-20211224-4] 文档日志管理
+dede/templets/article_edit.htm, [NP-20211224-4] 文档日志管理
+dede/templets/soft_edit.htm, [NP-20211224-4] 文档日志管理
+include/arc.archives.class.php, [NP-20211224-4] 文档日志管理
+install/sql-dfdata.txt, [NP-20211224-4] 文档日志管理
+install/sql-dftables.txt, [NP-20211224-4] 文档日志管理
+include/taglib/help/likearticle.txt, [NP-20211224-5] likearticle标签新增orderby、orderway属性，可以对自动关连文档标签排序
+include/taglib/likearticle.lib.php, [NP-20211224-5] likearticle标签新增orderby、orderway属性，可以对自动关连文档标签排序
+include/common.inc.php, [NP-20211224-6] 系统基本参数-> 核心设置 可以对超时退出登录时长进行设置
+install/config.cache.inc.php, [NP-20211224-6] 系统基本参数-> 核心设置 可以对超时退出登录时长进行设置
+install/sql-dfdata.txt, [NP-20211224-6] 系统基本参数-> 核心设置 可以对超时退出登录时长进行设置
+dede/file_manage_control.php, [SU-20211224-1] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+include/dedetag.class.php, [SU-20211224-2] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+plus/ad_js.php, [SU-20211224-2] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装

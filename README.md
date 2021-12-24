@@ -19,14 +19,14 @@ patch-xxx.zip压缩文件里面的sql文件格式为utf-8，文件名(年月日.
 在服务器上进入/public目录
 粘贴后选择[全部应用、合并]文件夹
 然后选择[全部应用、替换]文件
-然后手动修改verinfo.txt
+然后手动修改verinfo.txt，文件格式为gb2312
 
 4、更新官网版本
 复制base-v57文件夹
 在服务器上进入/public目录
 粘贴后选择[全部应用、合并]文件夹
 然后选择[全部应用、替换]文件
-然后手动修改verinfo.txt
+然后手动修改verinfo.txt，文件格式为utf-8
 
 5、在 https://github.com/dedecms/5.7/releases 生成一个Releases，V5.7.***
 注意！！！字母V必须大写！！！
