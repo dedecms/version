@@ -1,0 +1,24 @@
+dede/article_string_mix.php, [SU-20220112-1] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+plus/ad_js.php, [SU-20220112-2] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+plus/mytag_js.php, [SU-20220112-3] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+dede/sys_verifies.php, [SU-20220112-4] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+dede/file_manage_control.php, [SU-20220112-5] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+dede/article_template_rand.php, [SU-20220112-6] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+include/uploadsafe.inc.php, [FX-20220112-1] GIF图片上传
+dede/album_add.php, [NP-20220112-1] 系统基本参数-> 核心设置 可以对(是/否)开启文档日志进行设置
+dede/album_edit.php, [NP-20220112-1] 系统基本参数-> 核心设置 可以对(是/否)开启文档日志进行设置
+dede/archives_add.php, [NP-20220112-1] 系统基本参数-> 核心设置 可以对(是/否)开启文档日志进行设置
+dede/archives_do.php, [NP-20220112-1] 系统基本参数-> 核心设置 可以对(是/否)开启文档日志进行设置
+dede/archives_edit.php, [NP-20220112-1] 系统基本参数-> 核心设置 可以对(是/否)开启文档日志进行设置
+dede/archives_sg_add.php, [NP-20220112-1] 系统基本参数-> 核心设置 可以对(是/否)开启文档日志进行设置
+dede/archives_sg_edit.php, [NP-20220112-1] 系统基本参数-> 核心设置 可以对(是/否)开启文档日志进行设置
+dede/article_add.php, [NP-20220112-1] 系统基本参数-> 核心设置 可以对(是/否)开启文档日志进行设置
+dede/article_edit.php, [NP-20220112-1] 系统基本参数-> 核心设置 可以对(是/否)开启文档日志进行设置
+dede/inc/inc_batchup.php, [NP-20220112-1] 系统基本参数-> 核心设置 可以对(是/否)开启文档日志进行设置
+dede/soft_add.php, [NP-20220112-1] 系统基本参数-> 核心设置 可以对(是/否)开启文档日志进行设置
+dede/soft_edit.php, [NP-20220112-1] 系统基本参数-> 核心设置 可以对(是/否)开启文档日志进行设置
+include/arc.archives.class.php, [NP-20220112-1] 系统基本参数-> 核心设置 可以对(是/否)开启文档日志进行设置
+install/sql-dfdata.txt, [NP-20220112-1] 系统基本参数-> 核心设置 可以对(是/否)开启文档日志进行设置
+include/image.class.php, [FX-20220112-2] PNG透明图片上传
+include/uploadsafe.inc.php, [FX-20220112-2] PNG透明图片上传
+dede/archives_log_export.php, [FX-20220112-3] 文档日志导出
