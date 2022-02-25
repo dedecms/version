@@ -1,0 +1,4 @@
+dede/login.php, [SU-20220225-1] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+include/inc/inc_fun_funAdmin.php, [FX-20220225-1] Html编辑器
+dede/sys_verifies.php, [FX-20220225-2] 提示语优化
+dede/update_guide.php, [FX-20220225-2] 提示语优化
