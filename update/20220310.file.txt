@@ -1,0 +1,6 @@
+dede/mail_send.php, [FX-20220310-1] 发送邮件
+dede/mail_title.php, [FX-20220310-1] 发送邮件
+dede/login.php, [FX-20220310-2] 后台登录提示
+dede/file_manage_control.php, [SU-20220310-1] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+plus/mytag_js.php, [SU-20220310-2] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+dede/templets/spec_edit.htm, [FX-20220310-3] 专题节点栏目ID错位
