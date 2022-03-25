@@ -73,7 +73,8 @@ func main() {
 			snake.FS(srcdir).Cp("./public/base-v57/utf-8/source", true)
 			sl.Done()
 
-			generateUTF8Package()
+			// generateUTF8Package()
+			generateUTF8PackageZip()
 
 			// 输出更新日志文件到对应目录
 			sl = log.Start("拷贝UTF-8更新日志文件: ./public/base-v57/utf-8/" + uplistfile.Base())
@@ -241,6 +242,31 @@ func generateUTF8Package() {
 
 	l = log.Start("生成UTF-8安装包hash文件: ./public/base-v57/package/md5.hash.txt")
 	snake.FS("./public/base-v57/package/md5.hash.txt").Write(fmt.Sprintf(`jsonCallback({"DedeCMS-%s-UTF8.tar.bz2":"%s"});`, ver, patchname.MD5()))
+	l.Done()
+}
+
+func generateUTF8PackageZip() {
+	l := log.Start("生成UTF-8安装包: ./public/base-v57/package/DedeCMS-" + ver + "-UTF8.zip")
+	// 输出安装
+	patchname := snake.FS("./public/base-v57/package").Add("DedeCMS-" + ver + "-UTF8.zip")
+	zip := snake.Zip(patchname.Get())
+	for _, v := range snake.FS(srcrootdir).Find("*") {
+		if snake.FS(v).IsDir() {
+			continue
+		}
+
+		utf8 := snake.FS(v).ReplaceRoot("")
+		if src, ok := snake.FS(v).Open(); ok {
+			body := src.Byte()
+			zip.Add(utf8.Get(), body)
+			src.Close()
+		}
+	}
+	zip.Close()
+	l.Done()
+
+	l = log.Start("生成UTF-8安装包hash文件: ./public/base-v57/package/md5.hash.txt")
+	snake.FS("./public/base-v57/package/md5.hash.txt").Write(fmt.Sprintf(`jsonCallback({"DedeCMS-%s-UTF8.zip":"%s"});`, ver, patchname.MD5()))
 	l.Done()
 }
 
