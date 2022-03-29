@@ -187,8 +187,9 @@ func generatePatch() {
 
 	if src, ok := uplistfile.Open(); ok {
 		body := src.Byte()
+		stat, _ := src.Get().Stat()
 		src.Close()
-		zip.Add(uplistfile.Base(), body)
+		zip.Add(uplistfile.Base(), stat, body)
 	}
 
 	if f, ok := uplistfile.Open(); ok {
@@ -199,8 +200,9 @@ func generatePatch() {
 			src := snake.FS(srcdir).Add(item[0])
 			if file, ok := src.Open(); ok {
 				body := file.Byte()
+				stat, _ := file.Get().Stat()
 				file.Close()
-				zip.Add(utf8.Get(), body)
+				zip.Add(utf8.Get(), stat, body)
 
 				if !snake.String(src.Get()).Find("ckeditor", true) ||
 					(snake.String(src.Get()).Find("ckeditor", true) && snake.String(src.Ext()).ExistSlice([]string{".php"})) ||
@@ -213,7 +215,7 @@ func generatePatch() {
 					}
 				}
 
-				zip.Add(gbk.Get(), body)
+				zip.Add(gbk.Get(), stat, body)
 			}
 
 		}
@@ -251,14 +253,11 @@ func generateUTF8PackageZip() {
 	patchname := snake.FS("./public/base-v57/package").Add("DedeCMS-" + ver + "-UTF8.zip")
 	zip := snake.Zip(patchname.Get())
 	for _, v := range snake.FS(srcrootdir).Find("*") {
-		if snake.FS(v).IsDir() {
-			continue
-		}
-
 		utf8 := snake.FS(v).ReplaceRoot("")
 		if src, ok := snake.FS(v).Open(); ok {
 			body := src.Byte()
-			zip.Add(utf8.Get(), body)
+			stat, _ := src.Get().Stat()
+			zip.Add(utf8.Get(), stat, body)
 			src.Close()
 		}
 	}
