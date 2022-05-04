@@ -1,0 +1,23 @@
+dede/article_string_mix.php, [SU-20220504-1] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+dede/file_manage_control.php, [SU-20220504-1] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+include/uploadsafe.inc.php, [SU-20220504-1] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+dede/article_string_mix.php, [SU-20220504-2] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+include/uploadsafe.inc.php, [SU-20220504-2] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+dede/sys_safe.php, [SU-20220504-3] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+dede/upload.php, [SU-20220504-4] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+dede/catalog_add.php, [SU-20220504-5] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+dede/catalog_edit.php, [SU-20220504-5] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+include/typeunit.class.admin.php, [SU-20220504-5] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+include/typeunit.class.admin.php, [SU-20220504-6] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+dede/article_string_mix.php, [SU-20220504-7] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+dede/article_template_rand.php, [SU-20220504-7] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+dede/file_manage_control.php, [SU-20220504-7] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+include/dedetag.class.php, [SU-20220504-7] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+include/dedetemplate.class.php, [SU-20220504-7] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+include/uploadsafe.inc.php, [SU-20220504-7] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+plus/ad_js.php, [SU-20220504-7] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+plus/mytag_js.php, [SU-20220504-7] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+dede/login.php, [NP-20220504-1] 连续登录失败用户锁定
+include/payment/alipay.php, [NP-20220504-2] Alipay 电脑网站支付
+include/helpers/image.helper.php, [FX-20220504-1] 上传图片模糊
+include/uploadsafe.inc.php, [FX-20220504-1] 上传图片模糊
