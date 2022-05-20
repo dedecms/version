@@ -1,0 +1,23 @@
+dede/catalog_add.php, [NP-20220520-1] 栏目模板{dede:field.typebigimg /} 和 {dede:field.typesmallimg /} 调用栏目大图和小图
+dede/catalog_edit.php, [NP-20220520-1] 栏目模板{dede:field.typebigimg /} 和 {dede:field.typesmallimg /} 调用栏目大图和小图
+dede/templets/catalog_add.htm, [NP-20220520-1] 栏目模板{dede:field.typebigimg /} 和 {dede:field.typesmallimg /} 调用栏目大图和小图
+dede/templets/catalog_edit.htm, [NP-20220520-1] 栏目模板{dede:field.typebigimg /} 和 {dede:field.typesmallimg /} 调用栏目大图和小图
+dede/js/dialog.js, [FX-20220520-1] 弹出窗口设置
+dede/catalog_add.php, [NP-20220520-2] 栏目模板{dede:field.typeenglishname /}调用栏目英文名称
+dede/catalog_edit.php, [NP-20220520-2] 栏目模板{dede:field.typeenglishname /}调用栏目英文名称
+dede/templets/catalog_add.htm, [NP-20220520-2] 栏目模板{dede:field.typeenglishname /}调用栏目英文名称
+dede/templets/catalog_edit.htm, [NP-20220520-2] 栏目模板{dede:field.typeenglishname /}调用栏目英文名称
+dede/templets/member_toadmin.htm, [NP-20220520-3] 显示密码强度
+dede/templets/sys_admin_user_add.htm, [NP-20220520-3] 显示密码强度
+dede/templets/sys_admin_user_edit.htm, [NP-20220520-3] 显示密码强度
+dede/file_manage_control.php, [SU-20220520-1] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+dede/index_testenv.php, [NP-20220520-4] 定期更换密码提醒
+dede/member_toadmin.php, [NP-20220520-4] 定期更换密码提醒
+dede/sys_admin_user_add.php, [NP-20220520-4] 定期更换密码提醒
+dede/sys_admin_user_edit.php, [NP-20220520-4] 定期更换密码提醒
+include/taglib/currenturl.lib.php, [NP-20220520-5] 增加一个标签 {dede:currenturl /} 显示当前页面的url
+include/arc.archives.class.php, [FX-20220520-2] 关键词支持不同的编辑器
+include/arc.archives.class.php, [FX-20220520-3] 关键词URL重复
+dede/imagecut.php, [FX-20220520-4] 图片透明的部分会变成黑色
+include/helpers/image.helper.php, [FX-20220520-4] 图片透明的部分会变成黑色
+include/arc.archives.class.php, [FX-20220520-5] 关键词带有空格
