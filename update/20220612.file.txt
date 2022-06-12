@@ -1,0 +1,18 @@
+include/helpers/channelunit.helper.php, [FX-20220612-1] https网址替换
+dede/catalog_do.php, [FX-20220612-2] 栏目移动topid没变
+dede/login.php, [SU-20220612-1] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+dede/templets/login.htm, [SU-20220612-1] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+include/arc.archives.class.php, [FX-20220612-3] 关键词替换
+dede/sys_safetest.php, [FX-20220612-4] 用户安全中心
+include/helpers/channelunit.helper.php, [NP-20220612-1] 获取顶级栏目字段，function="GetTopField(@me, '请填写字段名')"
+dede/templets/file_manage_main.htm, [FX-20220612-5] 文件式管理器排序
+dede/archives_log_detail.php, [FX-20220612-6] 更新系统权限
+dede/archives_log_export.php, [FX-20220612-6] 更新系统权限
+dede/archives_log_list.php, [FX-20220612-6] 更新系统权限
+dede/archives_log_view.php, [FX-20220612-6] 更新系统权限
+dede/inc/grouplist.txt, [FX-20220612-6] 更新系统权限
+dede/inc/inc_action_info.php, [FX-20220612-6] 更新系统权限
+dede/inc/inc_menu.php, [FX-20220612-6] 更新系统权限
+dede/inc/inc_menu_map.php, [FX-20220612-6] 更新系统权限
+dede/inc/inc_menu.php, [FX-20220612-7] 菜单列表显示
+dede/templets/index_menu2.htm, [FX-20220612-7] 菜单列表显示
