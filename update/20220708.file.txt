@@ -1,0 +1,4 @@
+data/admin/config_update.php, [FX-20220708-1] 超文本传输协议
+include/inc/inc_fun_funAdmin.php, [FX-20220708-1] 超文本传输协议
+dede/login.php, [SU-20220708-1] 提高了DedeCMS的安全性，建议所有官方原版程序搭建的站点都进行安装
+dede/templets/index_body.htm, [FX-20220708-2] 浏览器自动升级请求
